@@ -1,0 +1,49 @@
+﻿@model TodoViewModel
+
+
+<div class="container">
+    <p>
+        <h1>Create Task</h1>
+    </p>
+
+    <div class="card card-body col-8 border border-secondary">
+        <div class="row">
+            <form method="post">
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="CategoryId"></label>
+                        <select class="form-control border border-secondary" asp-for="CategoryId">
+                            @{
+                                foreach (var category in Model.Categories)
+                                {
+                                    <option value=@category.Id>@category.Name</option>
+                                }
+                            }
+                        </select>
+                        <div class="form-group row mx-2 p-0">
+                            <label asp-for="Title"></label>
+                            <input class="form-control" asp-for="Title" />
+                            <span class="text-danger" asp-validation-for="Title"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description"></label>
+                            <textarea class="form-control" asp-for="Description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ScheduledFor"></label>
+                            <input class="form-control" asp-for="ScheduledFor" type="date"
+                                   min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                            <span class="text-danger" asp-validation-for="ScheduledFor"></span>
+                        </div>
+                        <div class="form-group col-8 mt-3">
+                            <button type="submit" class="btn btn-primary" asp-controller="Home" asp-action="Add">
+                                Create
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</div>

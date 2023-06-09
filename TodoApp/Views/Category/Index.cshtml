@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Category>
+
+
+<p>
+    <h1>Categories</h1>
+</p>
+
+<div class="row">
+    <div class="col-12 mb-3">
+        <span class="mr-2" title="Add category">
+            <a class="btn btn-primary" asp-controller="Category" asp-action="Add">Create category</a>
+        </span>
+    </div>
+     <div class="col-12">
+          <table class="table table-info">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model)
+            {
+                <tr class="table-secondary">
+                    <td>@category.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+     </div>
+
+</div>

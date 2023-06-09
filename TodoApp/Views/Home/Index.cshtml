@@ -1,0 +1,40 @@
+﻿
+@model IEnumerable<Todo>
+
+
+<p>
+    <h1>To-Do List</h1>
+</p>
+
+<div class="row">
+    <div class="col-12 mb-3">
+        <span class="mr-2" title="Add category">
+            <a class="btn btn-primary" asp-controller="Home" asp-action="Add">Add Task</a>
+        </span>
+    </div>
+    <div class="col-12">
+        <table class="table table-info">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Create at</th>
+                    <th scope="col">Scheduled for</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var task in Model)
+                {
+                    <tr class="table-secondary">
+                        <td>@task.Title</td>
+                        <td>@task.Category.Name</td>
+                        <td>@task.CreatedAt.ToString("dd/MM/yyyy")</td>
+                        <td>@task.ScheduledFor.ToString("dd/MM/yyyy")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
